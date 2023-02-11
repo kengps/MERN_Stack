@@ -8,7 +8,6 @@ import BlogComponent from './components/BlogComponent';
 
 function App() {
 
-
   return (
     <BrowserRouter>
       
