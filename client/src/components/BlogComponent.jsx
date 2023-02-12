@@ -14,6 +14,7 @@ const BlogComponent = () => {
     const inputValue=name=>event => {
         setState({...state, [name]:event.target.value})
         //console.log(name, "=", event.target.value);
+        console.log();
     }
     // function inputValue(name) {
     //   return function (event) {
@@ -21,15 +22,20 @@ const BlogComponent = () => {
     //     //console.log(name, "=", event.target.value);
     //   };
    // }
+  const submitForm = (event) =>{
+      event.preventDefault();
+    //  console.log({title , content , author});
+     
+   }
   return (
     <div className="container p-5">
       <NavbarComponent />
       <hr />
       <h1>เขียนบทความ</h1>
       {/* {JSON.stringify(state)} */}
-      <form>
+      <form onSubmit={submitForm}>
         <div className="form-group">
-          <label>ขื่อบทความ</label>
+          <label>ขื่อบทความ</label> 
           <input
             type="text"
             className="form-control"
