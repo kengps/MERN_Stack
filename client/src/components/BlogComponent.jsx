@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import { NavLink } from "react-router-dom";
 import NavbarComponent from "./NavbarComponent";
-
+import axios  from 'axios';
 
 const BlogComponent = () => {
     const [state, setState] = useState({
@@ -24,9 +24,26 @@ const BlogComponent = () => {
    // }
   const submitForm = (event) =>{
       event.preventDefault();
-    //  console.log({title , content , author});
+      //console.log({title , content , author});
+      console.log("API =" ,import.meta.env.VITE_REACT_APP_API);
      
+    //!   //เขียนแบบปกติ
+    axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} ).then((response) =>{
+      alert('Submit Success')
+    }).catch((err) =>{
+      alert(err);
+    })
+    
+  //   //* เขียนแบบ Async Await
+  //   try {
+  //       const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} )
+  //       alert('Submit Success')
+  //   } catch (error) {
+  //     alert(err.response.data.console.error);
+  //   }
    }
+
+   
   return (
     <div className="container p-5">
       <NavbarComponent />
