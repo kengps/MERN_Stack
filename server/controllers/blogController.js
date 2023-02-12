@@ -10,10 +10,10 @@ exports.create = (req, res) => {
   //ตรวจสอบความถูกต้องของข้อมูล
   switch (true) {
     case !title:
-      res.status(400).json({ error: "please input title" });
+      res.status(400).json({ error: "กรุณากรอกข้อมูลชื่อเรื่อง" });
       break;
     case !content:
-      res.status(400).json({ error: "please input content" });
+      res.status(400).json({ error: "กรุณากรอกรายละเอียด" });
       break;
   }
 
@@ -29,3 +29,13 @@ exports.create = (req, res) => {
 //     data: { title, content, author, slug },
 //   });
 };
+
+
+exports.getAllBlogs = (req,res) =>{
+  Blogs.find({}).exec((error,blogs) =>{
+    if(error){
+      console.log(error);
+    }
+    res.json(blogs)
+  })
+}

@@ -2,6 +2,7 @@ import  { useState } from "react";
 import { NavLink } from "react-router-dom";
 import NavbarComponent from "./NavbarComponent";
 import axios  from 'axios';
+import sweetAlert from 'sweetalert2'
 
 const BlogComponent = () => {
     const [state, setState] = useState({
@@ -22,25 +23,28 @@ const BlogComponent = () => {
     //     //console.log(name, "=", event.target.value);
     //   };
    // }
-  const submitForm = (event) =>{
+  const submitForm = async(event) =>{
       event.preventDefault();
       //console.log({title , content , author});
       console.log("API =" ,import.meta.env.VITE_REACT_APP_API);
      
-    //!   //เขียนแบบปกติ
-    axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} ).then((response) =>{
-      alert('Submit Success')
-    }).catch((err) =>{
-      alert(err);
-    })
+    //   //เขียนแบบปกติ
+    // axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} ).then((response) =>{
+
+    //   sweetAlert.fire('แจ้งเตือน' , 'บันทึกข้อมูลสำเร็จ','success');
+      
+    // }).catch((err) =>{
+    //   sweetAlert.fire('แจ้งเตือน' , err.response.data.error,'error')
+    // })
     
-  //   //* เขียนแบบ Async Await
-  //   try {
-  //       const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} )
-  //       alert('Submit Success')
-  //   } catch (error) {
-  //     alert(err.response.data.console.error);
-  //   }
+  //   เขียนแบบ Async Await
+    try {
+        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/create`,{title , content , author} )
+        sweetAlert.fire('แจ้งเตือน' , 'บันทึกข้อมูลสำเร็จ','success');
+        setState({...state , title:'',content:'', author:''})
+    } catch (err) {
+      sweetAlert.fire('แจ้งเตือน' , err.response.data.error,'error')
+    }
    }
 
    
