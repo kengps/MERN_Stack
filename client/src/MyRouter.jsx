@@ -30,8 +30,8 @@ const MyRouter = () => {
           <div className="row" key={index} style={{borderBottom:"1px solid silver"}}>
                 <div className="col pt-3 pb-3"> 
                   <h2>{blog.title}</h2>
-                  <p>{blog.content}</p>
-                  <p className="text-muted">{blog.author} เผยแพร่เมื่อ {blog.createAt}</p>
+                  <p>{blog.content.substring(0, 180) }</p>
+                  <p className="text-muted">{blog.author} เผยแพร่เมื่อ {new Date(blog.createdAt).toLocaleString()}</p>
                 </div>
           </div>
       ))}

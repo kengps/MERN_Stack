@@ -31,6 +31,7 @@ exports.create = (req, res) => {
 };
 
 
+// ค้นหาข้อมูลทั้งหมด
 exports.getAllBlogs = (req,res) =>{
   Blogs.find({}).exec((error,blogs) =>{
     if(error){
@@ -40,3 +41,18 @@ exports.getAllBlogs = (req,res) =>{
     console.log('ทำการดึงข้อมูลเรียบร้อยแล้ว');
   })
 }
+
+// ค้นหาข้อมูลแค่ตัวเดี๋ยวโดยอ้างอิงจาก slug
+
+exports.singleBlog= (req ,res)=>{
+  const {slug} = req.params
+  Blogs.findOne({ slug }).exec((error, blog) =>{
+      if(error){
+      console.log(error);
+    }
+    res.json(blog);
+    console.log('ทำการดึงข้อมูลเรียบร้อยแล้ว');
+  })
+}
+
+
