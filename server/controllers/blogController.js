@@ -37,5 +37,6 @@ exports.getAllBlogs = (req,res) =>{
       console.log(error);
     }
     res.json(blogs)
+    console.log('ทำการดึงข้อมูลเรียบร้อยแล้ว');
   })
 }
