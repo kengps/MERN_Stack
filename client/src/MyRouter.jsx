@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import NavbarComponent from "./components/NavbarComponent";
 
 const MyRouter = () => {
@@ -29,7 +29,11 @@ const MyRouter = () => {
       {blogs.map((blog, index) =>(
           <div className="row" key={index} style={{borderBottom:"1px solid silver"}}>
                 <div className="col pt-3 pb-3"> 
-                  <h2>{blog.title}</h2>
+                <nav>
+                    <Link to={`/blog/${blog.slug}`}>
+                    <h4>{blog.title}</h4>
+                    </Link>
+                </nav>
                   <p>{blog.content.substring(0, 180) }</p>
                   <p className="text-muted">{blog.author} เผยแพร่เมื่อ {new Date(blog.createdAt).toLocaleString()}</p>
                 </div>

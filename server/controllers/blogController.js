@@ -1,12 +1,16 @@
 const Blogs = require("../models/blogs");
-
 const slugify = require("slugify");
+
+const { v4: uuidv4 } = require('uuid');
 
 //การสร้าง
 exports.create = (req, res) => {
   const { title, content, author } = req.body;
-  const slug = slugify(title);
+  let slug = slugify(title);
 
+  if(!slug){
+    slug = uuidv4();
+  }
   //ตรวจสอบความถูกต้องของข้อมูล
   switch (true) {
     case !title:
