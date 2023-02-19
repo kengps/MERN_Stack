@@ -10,16 +10,18 @@ const SingleComponent = () => {
   const [blog, setBlog] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_REACT_APP_API}/blog/${props}`)
-      .then((response) => {
+ const  fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_API}/blog/${props}`
+        );
         setBlog(response);
-        console.log("respone =", response);
-        console.log("respone 2=", response.data.title);
-        console.log("respone 3=", response.data.content);
-   
-      })
-      .catch((err) => alert(err));
+      } catch (err) {
+        alert(err);
+      }
+    };
+
+    fetchData();
   }, []);
   return <div>The content is {JSON.stringify(blog)}</div>;
   
