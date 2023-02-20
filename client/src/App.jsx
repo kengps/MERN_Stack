@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyRouter from "./MyRouter";
 import BlogComponent from "./components/BlogComponent";
 import SingleComponent from "./components/SingleComponent";
+import EditComponent from "./components/EditComponent";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <Route path="/blog/">
           <Route path=":slug" element={<SingleComponent/>}/>
         </Route>
+        <Route path="/blog/edit">
+          <Route path=":slug" element={<EditComponent/>}/>
+        </Route>
+        
       </Routes>
     </BrowserRouter>
   );

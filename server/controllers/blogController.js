@@ -59,4 +59,22 @@ exports.singleBlog= (req ,res)=>{
   })
 }
 
+//ลบข้อมูล ฝั่ง server
+exports.deleteBlog=(req,res) =>{
+  const {slug} = req.params
+  Blogs.findOneAndRemove({slug}).exec((err,blog) =>{
+      if(err) console.log(err);
+      res.json({message: 'Delete Blog Success!!'})
+  })
+}
 
+// update ข้อมูลฝั่ง Server
+exports.updateBlog =(req,res) =>{
+  const {slug} = req.params;
+  const {title,content,author} = req.body
+
+  Blogs.findOneAndUpdate({slug},{title,content,author}, {new:true}).exec((error,blog) =>{
+    if(error) console.log('เกิดข้อผิดพลาด'+err);
+    res.json(blog);
+  })
+}

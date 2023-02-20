@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
+import NavbarComponent from './NavbarComponent'
 
 const SingleComponent = () => {
   const slug = useParams();
@@ -15,7 +16,8 @@ const SingleComponent = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_REACT_APP_API}/blog/${props}`
         );
-        setBlog(response);
+        setBlog(response.data);
+       // console.log('single '+ response.data.slug + JSON.stringify(response));
       } catch (err) {
         alert(err);
       }
@@ -23,7 +25,17 @@ const SingleComponent = () => {
 
     fetchData();
   }, []);
-  return <div>The content is {JSON.stringify(blog)}</div>;
+  return (
+<div className="container">
+<NavbarComponent/>
+  <h3>{blog.title}</h3>
+  <p>{blog.content}</p>
+  <p>เผยแพร่โดย :  {blog.author} เมื่อ {new Date(blog.createdAt).toLocaleString()}</p>
+
+  </div>
+
+  )
+  
   
 };
 
