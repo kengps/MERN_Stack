@@ -82,7 +82,7 @@ const BlogComponent = () => {
           />
         </div>
         <hr />
-        <input type="submit" className="btn btn-primary" value="submit" />
+        <input type="submit" className="btn btn-primary" value="Submit" />
       </form>
       <br />
     </div>
