@@ -16,6 +16,11 @@ const NavbarComponent = () => {
             เขียนบทความ
           </NavLink>
         </li>
+        <li className="nav-item pr-3 pt-3 pb-3">
+          <NavLink className="nav-link" to="/login">
+            เข้าสู่ระบบ
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

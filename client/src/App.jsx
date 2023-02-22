@@ -4,6 +4,7 @@ import MyRouter from "./MyRouter";
 import BlogComponent from "./components/BlogComponent";
 import SingleComponent from "./components/SingleComponent";
 import EditComponent from "./components/EditComponent";
+import LoginComponent from "./components/LoginComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/blog/edit">
           <Route path=":slug" element={<EditComponent/>}/>
         </Route>
+        <Route path="/login" element={<LoginComponent/>}/>
         
       </Routes>
     </BrowserRouter>
