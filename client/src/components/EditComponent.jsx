@@ -4,17 +4,30 @@ import NavbarComponent from "./NavbarComponent";
 import axios from "axios";
 import sweetAlert from "sweetalert2";
 
+
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
+
 const EditComponent = () => {
   const slug1 = useParams();
   const props = slug1.slug;
   console.log("Edit props" + props);
   const [state, setState] = useState({
     title: "",
-    content: "",
     author: "",
     slug: ""
   });
-    const { title, content, author, slug } = state;
+    const { title, author, slug } = state;
+
+    
+  const [content, SetContent] = useState("");
+
+  const SubmitContent = (event) => {
+    SetContent(event);
+    console.log('event submitContent'+ event);
+  };
+
 
     //console.log('state = ', state);
   useEffect(() => {
@@ -23,11 +36,14 @@ const EditComponent = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_REACT_APP_API}/blog/${props}`
         );
-        const {title , content , author , slug} = response.data
+        const {title  , content ,author , slug} = response.data
 
-        setState({...state, title, content, author, slug });
+        setState({...state, title, author, slug });
+        SetContent(content)
+       
         // console.log('Edit '+JSON.stringify(response.data.title));
-        // console.log(response.data);
+        //  console.log(response.data);
+        //  console.log("response อย่างเดียว" + JSON.stringify(...setState));
         
       } catch (err) {
         alert(err);
@@ -39,7 +55,7 @@ const EditComponent = () => {
 
   const inputValue = (name) => (event) => {
     setState({ ...state, [name]: event.target.value });
-    //console.log(name, "=", event.target.value);
+   // console.log(name, "=", event.target.value);
   };
   // function inputValue(name) {
   //   return function (event) {
@@ -55,7 +71,8 @@ const EditComponent = () => {
         axios.put(`${import.meta.env.VITE_REACT_APP_API}/blog/${props}`,{title , content , author} ).then((response) =>{
           sweetAlert.fire('แจ้งเตือน' , 'บันทึกข้อมูลสำเร็จ','success');
           const { title, content, author, slug } = response.data;
-           setState({ ...state, title:'', content:'', author:'', slug:'' });
+           setState({ ...state, title, author, slug });
+          SetContent(content);
         }).catch((err) =>{
           sweetAlert.fire('แจ้งเตือน' , err.response.data.error,'error')
         })
@@ -94,10 +111,11 @@ const EditComponent = () => {
         </div>
         <div className="form-group">
           <label>รายละเอียด</label>
-          <textarea
+
+          <ReactQuill
             className="form-control"
             value={content}
-            onChange={inputValue("content")}
+            onChange={SubmitContent}
           />
         </div>
         <div className="form-group">
@@ -106,7 +124,7 @@ const EditComponent = () => {
             type="text"
             className="form-control"
             value={author}
-            onChange={inputValue("author")}
+            onChange={SubmitContent}
           />
         </div>
         <hr />
