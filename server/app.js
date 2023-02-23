@@ -3,7 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
+
 const routerBlog = require('./routers/blog')
+const routerAuth = require('./routers/auth')
 
 const mongoose = require('mongoose');
 //connect dataBase
@@ -25,5 +27,6 @@ app.use(morgan('dev'));
 
 //router
 app.use('/api', routerBlog);
+app.use("/api", routerAuth);
 
 app.listen(process.env.PORT , ()=> console.log('Server is running 3001'));
