@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 import NavbarComponent from './NavbarComponent'
-
+import axios from 'axios'
+import SweetAl from 'sweetalert2'
+import { authenticate } from '../service/authorize'
+import { useNavigate } from "react-router-dom";
 
 
 const LoginComponent = () => {
+  const history = useNavigate();
+  //const props = useParams();
+  
+console.log('asd'+history);
+
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -20,7 +28,17 @@ const LoginComponent = () => {
   const submitForm = async (event) => {
     event.preventDefault();
     //console.log({title , content , author});
-    console.table({username , password});
+   try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API}/login`,
+      { username, password }
+    );
+       // ถ้าlogin สำเร็จ 
+       authenticate(response, () => history("/create"));
+   } catch (error) {
+    SweetAl.fire("แจ้งเตือน", error.response.data.error, "error");
+    
+   }
     
   };
   return (
@@ -56,4 +74,4 @@ const LoginComponent = () => {
   );
 }
 
-export default LoginComponent
+export default LoginComponent;

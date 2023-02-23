@@ -13,6 +13,7 @@ const EditComponent = () => {
   const slug1 = useParams();
   const props = slug1.slug;
   console.log("Edit props" + props);
+  console.log("Edit slug1" + JSON.stringify(slug1));
   const [state, setState] = useState({
     title: "",
     author: "",
