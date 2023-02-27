@@ -7,3 +7,34 @@ export const authenticate = (response, next) => {
   }
   next();
 };
+
+// ดึงข้อมูํล token
+
+export const getToken = (response, next) => {
+  if (window !== "Undefiend") {
+    if (sessionStorage.getItem("token")) {
+      return JSON.parse(sessionStorage.getItem("token"));
+    } else {
+      return false;
+    }
+  }
+};
+
+// ดึงข้อมูํล  user
+export const getUser = (response, next) => {
+  if (window !== "Undefiend") {
+    if (sessionStorage.getItem("user")) {
+      return JSON.parse(sessionStorage.getItem("user"));
+    } else {
+      return false;
+    }
+  }
+};
+
+export const logout = (next) => {
+  if (window !== "undefiend") {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+  }
+  next();
+};

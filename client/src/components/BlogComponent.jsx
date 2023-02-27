@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import NavbarComponent from "./NavbarComponent";
 import axios from "axios";
 import sweetAlert from "sweetalert2";
-
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { getToken, getUser } from "../service/authorize";
 
 const BlogComponent = () => {
   const [state, setState] = useState({
     title: "",
-    author: "",
+    author: getUser(),
   });
   const { title, author } = state;
 
@@ -23,7 +23,6 @@ const BlogComponent = () => {
   const inputValue = (name) => (event) => {
     setState({ ...state, [name]: event.target.value });
     //console.log(name, "=", event.target.value);
-   
   };
   // function inputValue(name) {
   //   return function (event) {
@@ -49,7 +48,12 @@ const BlogComponent = () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_APP_API}/create`,
-        { title, content, author }
+        { title, content, author },
+        {
+          headers: {
+            Authorization: `bearer ${getToken()}`,
+          },
+        }
       );
       sweetAlert.fire("แจ้งเตือน", "บันทึกข้อมูลสำเร็จ", "success");
       setState({ ...state, title: "", author: "" });
@@ -77,22 +81,37 @@ const BlogComponent = () => {
         </div>
         <div className="form-group">
           <label>รายละเอียด</label>
-          <ReactQuill 
-          value={content}
-          onChange={SubmitContent}
+          <ReactQuill
+            value={content}
+            onChange={SubmitContent}
             placeholder="กรุณาระบุรายละเอียดของคุณ"
             className="pb-5 mb-3"
-            style={{border: "1px solid #666"}}
+            style={{ border: "1px solid #666" }}
           />
         </div>
         <div className="form-group">
           <label>ผู้เขียน</label>
-          <input
-            type="text"
-            className="form-control"
-            value={author}
-            onChange={inputValue("author")}
-          />
+          {getUser() && (
+            <>
+              <input
+                type="text"
+                className="form-control"
+                value={author}
+                onChange={inputValue("author")}
+                disabled="disabled"
+              />
+            </>
+          )}
+          {!getUser() && (
+            <>
+              <input
+                type="text"
+                className="form-control"
+                value="สมาชิกไร้ตัวตัน"
+                onChange={inputValue("author")}
+              />
+            </>
+          )}
         </div>
         <hr />
         <input type="submit" className="btn btn-primary" value="Submit" />
