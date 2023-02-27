@@ -28,7 +28,8 @@ const SingleComponent = () => {
     <div className="container">
       <NavbarComponent />
       <h3>{blog.title}</h3>
-      <p>{blog.content}</p>
+      <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+     {/* <p>{blog.content}</p> */}
       <p>
         เผยแพร่โดย : {blog.author} เมื่อ{" "}
         {new Date(blog.createdAt).toLocaleString()}

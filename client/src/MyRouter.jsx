@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import NavbarComponent from "./components/NavbarComponent";
 import Sweet from "sweetalert2";
 import { getToken, getUser } from "./service/authorize";
-//import renderHTML  from 'react-render-html'
+
 
 const MyRouter = () => {
   const [blogs, setBlogs] = useState([]);
@@ -74,7 +74,12 @@ const MyRouter = () => {
                 <h4>{blog.title}</h4>
               </NavLink>
             </nav>
-            <p>{blog.content.substring(0, 180)}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: blog.content.substring(0, 180),
+              }}
+            />
+            {/* <div>{blog.content.substring(0, 180)}</div> */}
 
             <p className="text-muted">
               {blog.author} เผยแพร่เมื่อ{" "}
