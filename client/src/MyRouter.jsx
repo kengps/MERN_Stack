@@ -10,10 +10,19 @@ import DOMPurify from "dompurify";
 
 import ReactPaginate from "react-paginate";
 
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+
 const MyRouter = () => {
+  // State ของการค้นหา
+  const [search, setSearch] = useState("");
+  // State ของ Blog
   const [blogs, setBlogs] = useState([]);
+  // State ของ Pagination
   const [currentPage, setCurrentPage] = useState([]);
-  const ITEMS_PER_PAGE = 10; // Change this to the desired number of items per page
+
+  // Change this to the desired number of items per page
+  const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {}, []);
 
@@ -75,8 +84,23 @@ const MyRouter = () => {
   return (
     <div className="container p-5">
       <NavbarComponent />
-
+      <Form>
+        <InputGroup className="mt-1">
+          <Form.Control
+            placeholder="ค้นหาข้อมูลบทความ"
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
+        </InputGroup>
+      </Form>
+     
       {blogs
+        .filter((item) => {
+          return search.toLowerCase() === ""
+            ? item
+            : item.title.toLowerCase().includes(search);
+        })
         .slice(currentPage * ITEMS_PER_PAGE, (currentPage + 1) * ITEMS_PER_PAGE)
         .map((blog, index) => (
           <div
