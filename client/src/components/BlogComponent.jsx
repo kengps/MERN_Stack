@@ -57,7 +57,7 @@ const BlogComponent = () => {
       );
       sweetAlert.fire("แจ้งเตือน", "บันทึกข้อมูลสำเร็จ", "success");
       setState({ ...state, title: "", author: "" });
-      SetConnent("");
+      SetContent("");
     } catch (err) {
       sweetAlert.fire("แจ้งเตือน", err.response.data.error, "error");
     }

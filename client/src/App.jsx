@@ -5,6 +5,7 @@ import BlogComponent from "./components/BlogComponent";
 import SingleComponent from "./components/SingleComponent";
 import EditComponent from "./components/EditComponent";
 import LoginComponent from "./components/LoginComponent";
+import RegisterComponent from "./components/RegisterComponent";
 import PrivateRoutes from "./PrivateRoutes";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         </Route>
 
         <Route path="/login" element={<LoginComponent />} />
+        <Route path="/register" element={<RegisterComponent />} />
       </Routes>
     </BrowserRouter>
     // <BrowserRouter>

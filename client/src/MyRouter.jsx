@@ -12,6 +12,11 @@ import ReactPaginate from "react-paginate";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+
+
+import { AiOutlineMinus } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 
 const MyRouter = () => {
   // State ของการค้นหา
@@ -24,6 +29,8 @@ const MyRouter = () => {
   // Change this to the desired number of items per page
   const ITEMS_PER_PAGE = 10;
 
+
+  
   useEffect(() => {}, []);
 
   const fetchData = async () => {
@@ -81,20 +88,30 @@ const MyRouter = () => {
     setCurrentPage(selected);
   };
 
+const onClickButton = (e) => {
+  e.preventDefault();
+  setSearch("");
+ console.log('ลบข้อมูลเรียบร้อยแล้ว');
+};
+
   return (
     <div className="container p-5">
       <NavbarComponent />
       <Form>
         <InputGroup className="mt-1">
+          <InputGroup.Text>ค้นหาข้อมูลบทความ</InputGroup.Text>
           <Form.Control
-            placeholder="ค้นหาข้อมูลบทความ"
+            value={search}
             onChange={(event) => {
               setSearch(event.target.value);
             }}
           />
+          <Button variant="danger" value="Submit" onClick={onClickButton}>
+            <RxCross2 />
+          </Button>
         </InputGroup>
       </Form>
-     
+
       {blogs
         .filter((item) => {
           return search.toLowerCase() === ""
