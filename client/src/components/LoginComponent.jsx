@@ -4,6 +4,9 @@ import axios from "axios";
 import SweetAl from "sweetalert2";
 import { authenticate, getUser } from "../service/authorize";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const LoginComponent = () => {
   const history = useNavigate();
@@ -50,29 +53,41 @@ const LoginComponent = () => {
       <NavbarComponent />
       <hr />
       <h1>เข้าสู่ระบบ | Admin </h1>
-      {JSON.stringify(state)}
-      <form onSubmit={submitForm}>
+      {/* {JSON.stringify(state)} */}
+      <Form onSubmit={submitForm}>
+          <div className="form-group">
+           <InputGroup className="mt-3">
+           <InputGroup.Text>Username</InputGroup.Text>
+            <Form.Control
+              type="text"
+              className="form-control"
+              value={username}
+              onChange={inputValue("username")}
+            />
+        </InputGroup>
+          </div>
         <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            className="form-control"
-            value={username}
-            onChange={inputValue("username")}
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
+          <InputGroup className="mt-3">
+          <InputGroup.Text>Password</InputGroup.Text>
+          <Form.Control
             type="password"
             className="form-control"
             value={password}
             onChange={inputValue("password")}
-          />
+            />
+            </InputGroup>
         </div>
         <hr />
-        <input type="submit" className="btn btn-primary" value="Submit" />
-      </form>
+        {/* <input type="submit" className="btn btn-primary" value="Submit" /> */}
+        <Button
+          type="submit"
+          className="btn btn-primary"
+          value="Submit"
+          disabled={username.length < 8}
+        >
+          เข้าสู่ระบบ
+        </Button>
+      </Form>
       <br />
     </div>
   );

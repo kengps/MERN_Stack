@@ -9,6 +9,11 @@ import "react-quill/dist/quill.snow.css";
 
 import { getToken } from "../service/authorize";
 
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+
+
 const EditComponent = () => {
   const slug1 = useParams();
   const props = slug1.slug;
@@ -110,22 +115,25 @@ const EditComponent = () => {
 
       <form onSubmit={submitForm}>
         <div className="form-group">
-          <label>ขื่อบทความ</label>
-          <input
-            type="text"
-            className="form-control"
-            value={title}
-            onChange={inputValue("title")}
-          />
+          <InputGroup>
+            <InputGroup.Text>ขื่อบทความ</InputGroup.Text>
+            <Form.Control
+              type="text"
+              className="form-control"
+              value={title}
+              onChange={inputValue("title")}
+            />
+          </InputGroup>
         </div>
         <div className="form-group">
           <label>รายละเอียด</label>
-
           <ReactQuill
-            className="form-control"
             value={content}
             onChange={SubmitContent}
+            className="pb-5 mb-3"
+            style={{ border: "1px solid #666" }}
           />
+          
         </div>
         <div className="form-group">
           <label>ผู้เขียน</label>

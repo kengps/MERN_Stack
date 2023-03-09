@@ -7,6 +7,11 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { getToken, getUser } from "../service/authorize";
 
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+
+
 const BlogComponent = () => {
   const [state, setState] = useState({
     title: "",
@@ -69,25 +74,30 @@ const BlogComponent = () => {
       <hr />
       <h1>เขียนบทความ</h1>
       {/* {JSON.stringify(state)} */}
-      <form onSubmit={submitForm}>
+      <Form onSubmit={submitForm}>
         <div className="form-group">
-          <label>ขื่อบทความ</label>
-          <input
-            type="text"
-            className="form-control"
-            value={title}
-            onChange={inputValue("title")}
-          />
+          <InputGroup>
+            <InputGroup.Text>ขื่อบทความ</InputGroup.Text>
+            <Form.Control
+              type="text"
+              className="form-control"
+              value={title}
+              onChange={inputValue("title")}
+            />
+          </InputGroup>
         </div>
         <div className="form-group">
           <label>รายละเอียด</label>
-          <ReactQuill
-            value={content}
-            onChange={SubmitContent}
-            placeholder="กรุณาระบุรายละเอียดของคุณ"
-            className="pb-5 mb-3"
-            style={{ border: "1px solid #666" }}
-          />
+         
+            <ReactQuill
+              value={content}
+              onChange={SubmitContent}
+              placeholder="กรุณาระบุรายละเอียดของคุณ"
+              className="pb-5 mb-3"
+              style={{ border: "1px solid #666" }}
+              />
+             
+        
         </div>
         <div className="form-group">
           <label>ผู้เขียน</label>
@@ -115,7 +125,7 @@ const BlogComponent = () => {
         </div>
         <hr />
         <input type="submit" className="btn btn-primary" value="Submit" />
-      </form>
+      </Form>
       <br />
     </div>
   );
