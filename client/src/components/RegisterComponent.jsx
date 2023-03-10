@@ -2,50 +2,110 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import SweetAlert from "sweetalert2";
 
-
-
+import { BiHide, BiShow } from "react-icons/bi";
+import { Spin } from "antd";
+import axios from "axios";
 
 const RegisterComponent = () => {
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+    confirmpass: "",
+  });
 
- const [register, setRegister] = useState({
+  //ตรวจสอบว่ารหัสผ่าน กับ คอนเฟิร์มตรงกันไหม
+  const [confirmPasswordNotMatch, setConfirmPasswordNotMatch] = useState("");
+// ตรวจสอบว่ารหัสผ่านมีตัวเลข หรือ  มีการใส่ภาษาไทยไหม
+  const [passwordError, setPasswordError] = useState("");
 
-   username:"" ,
-   password:""  ,
-   confirmpass:"" 
- });
+  const [showPassword , setShowPassword] = useState('');
+  const { username, password, confirmpass } = state;
+  //console.log(register);
 
- //console.log(register);
+  //  const handleRegister = (e) => {
 
- const handleRegister = (e) => {
+  //  setRegister({ ...register, [e.target.name]: e.target.value });
 
- setRegister({ ...register, [e.target.name]: e.target.value});
+  //  }
 
- }
+  const inputValue = (name) => (event) => {
+    setState({ ...state, [name]: event.target.value });
+    //console.log(name, "=", event.target.value);
+  };
 
- const submitForm = (e) => {
-  e.preventDefault();
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    console.table({ username, password, confirmpass });
+
+    console.log("URL : " + import.meta.env.VITE_REACT_APP_API);
+
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/;
+
+    if (!regex.test(password)) {
+      setPasswordError(
+        "Password must contain only English letters and at least one number"
+      );
+      return;
+    }
+    if (password !== confirmpass) {
+      setConfirmPasswordNotMatch("PassWord is not match");
+    } else {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_REACT_APP_API}/register`,
+          {
+            username,
+            password,
+            confirmpass,
+          }
+        );
+        SweetAlert.fire("แจ้งเตือน", "สมัคสมาชิกสำเร็จ", "success");
+        setState({ ...state, username: "", password: "", confirmpass: "" });
+        setConfirmPasswordNotMatch("");
+      } catch (error) {
+        alert(error);
+      }
+    }
+  };
+  // console.log(import.meta.env.VITE_REACT_API_APP);
+
+const toggleShowPassword = () =>{
+    setShowPassword((prevShowPassword) => !prevShowPassword)
+}
   
-  if(register.password !== register.confirmpass){
-    alert('รหัสผ่านไม่ตรงกัน')
-  }else{
-    alert('โอเค')
-  }
- }
   return (
     <div>
+      {JSON.stringify(state)}
       <h1>ResgisterComponent</h1>
       <div className="from-control">
         <Form onSubmit={submitForm}>
-          <div onChange={handleRegister}>
+          <div>
             <InputGroup className="border mt-3">
               <InputGroup.Text>Username</InputGroup.Text>
-              <Form.Control className="form-control input-lg" name="username" />
+              <Form.Control
+                className="form-control input-lg"
+                name="username"
+                onChange={inputValue("username")}
+                value={username}
+              />
             </InputGroup>
 
             <InputGroup className="mt-3">
               <InputGroup.Text>Password</InputGroup.Text>
-              <Form.Control className="form-control input-lg" name="password" />
+              <Form.Control
+                className="form-control input-lg"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={inputValue("password")}
+              />
+              <Button variant="secondary" onClick={toggleShowPassword}>
+                {showPassword ? <BiShow /> : <BiHide />} Password
+                {/* <BiHide /> */}
+              </Button>
             </InputGroup>
 
             <InputGroup className="mt-3">
@@ -53,21 +113,36 @@ const RegisterComponent = () => {
               <Form.Control
                 className="form-control input-lg"
                 name="confirmpass"
+                type={showPassword ? "text" : 'password'}
+                onChange={inputValue("confirmpass")}
+                value={confirmpass}
               />
+              <Button variant="secondary" onClick={toggleShowPassword}>
+                {showPassword ? <BiShow /> : <BiHide />} password
+              </Button>
             </InputGroup>
           </div>
 
           <Button
             className="mt-3"
             type="submit"
-            disabled={register.password.length < 6 || register.confirmpass.length < 6}
+            disabled={state.password.length < 6 || state.confirmpass.length < 6}
           >
             Register
           </Button>
+
+          {confirmPasswordNotMatch && (
+            <div className="error">{confirmPasswordNotMatch}</div>
+          )}
+
+          {passwordError && <div className="error">{passwordError}</div>}
         </Form>
       </div>
+      {/* <Spin tip="Loading..." size="large">
+        <div className="content" />
+      </Spin> */}
     </div>
-  ); 
+  );
 };
 
 export default RegisterComponent;
