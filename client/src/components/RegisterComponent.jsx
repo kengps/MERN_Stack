@@ -17,10 +17,11 @@ const RegisterComponent = () => {
 
   //ตรวจสอบว่ารหัสผ่าน กับ คอนเฟิร์มตรงกันไหม
   const [confirmPasswordNotMatch, setConfirmPasswordNotMatch] = useState("");
-// ตรวจสอบว่ารหัสผ่านมีตัวเลข หรือ  มีการใส่ภาษาไทยไหม
+  // ตรวจสอบว่ารหัสผ่านมีตัวเลข หรือ  มีการใส่ภาษาไทยไหม
   const [passwordError, setPasswordError] = useState("");
-
-  const [showPassword , setShowPassword] = useState('');
+  // state ของการกดปุ่มให้ โชว์หรือปิด password
+  const [showPassword, setShowPassword] = useState("");
+  //การ destructuring ของ state
   const { username, password, confirmpass } = state;
   //console.log(register);
 
@@ -72,10 +73,10 @@ const RegisterComponent = () => {
   };
   // console.log(import.meta.env.VITE_REACT_API_APP);
 
-const toggleShowPassword = () =>{
-    setShowPassword((prevShowPassword) => !prevShowPassword)
-}
-  
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <div>
       {JSON.stringify(state)}
@@ -113,7 +114,7 @@ const toggleShowPassword = () =>{
               <Form.Control
                 className="form-control input-lg"
                 name="confirmpass"
-                type={showPassword ? "text" : 'password'}
+                type={showPassword ? "text" : "password"}
                 onChange={inputValue("confirmpass")}
                 value={confirmpass}
               />
