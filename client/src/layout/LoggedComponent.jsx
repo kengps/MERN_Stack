@@ -6,7 +6,13 @@ import SweetAlert from "sweetalert2";
 
 import axios from "axios";
 
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 const LoggedComponent = () => {
+  const redirect = useNavigate();
+  const dispatch = useDispatch();
+
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -27,6 +33,16 @@ const LoggedComponent = () => {
     //console.log(name, "=", event.target.value);
   };
 
+  //
+  const levelRole = (role) => {
+    if(role === "user") {
+
+      redirect('/level/user');
+    }else {
+      redirect('/level/admin');
+    }
+
+  }
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -41,11 +57,32 @@ const LoggedComponent = () => {
           username,
           password,
         }
-        
       );
-      console.log(response);
+      const token = response.data.token;
+      console.log(response.data);
+
       SweetAlert.fire("แจ้งเตือน", "เข้าสู่ระบบสำเร็จ", "success");
       setState({ ...state, username: "", password: "" });
+
+      // payload มาจาก loggedComponent จากการ return action.payload
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          token: token,
+          username: response.data.payLoad.user.username,
+          role: response.data.payLoad.user.role,
+        },
+      });
+      localStorage.setItem("token", token); 
+
+      setTimeout(() =>{
+        levelRole(response.data.payLoad.user.role);
+
+      },3000) 
+
+    
+
+
     } catch (error) {
       SweetAlert.fire("แจ้งเตือน", "เข้าสู่ระบบไม่สำเร็จ", "error");
       console.log(error);

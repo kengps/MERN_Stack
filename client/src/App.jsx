@@ -8,7 +8,8 @@ import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import PrivateRoutes from "./PrivateRoutes";
 import LoggedComponent from "./layout/LoggedComponent";
-
+import PageAdmin from "./components/pages/admin/PageAdmin";
+import PageUser from "./components/pages/users/PageUser";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path="/login" element={<LoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
         <Route path="/logged" element={<LoggedComponent />} />
+        <Route path="/level/admin" element={<PageAdmin />} />
+        <Route path="/level/user" element={<PageUser />} />
       </Routes>
     </BrowserRouter>
     // <BrowserRouter>
