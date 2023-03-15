@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUser, logout } from "../service/authorize";
 import Swal from "sweetalert2";
 
+
+
+
 const NavbarComponent = () => {
   const redirect = useNavigate();
   return (
@@ -27,6 +30,7 @@ const NavbarComponent = () => {
         )}
         {getUser() && (
           <li className="nav-item pr-3 pt-3 pb-3">
+
             <button
               className="nav-link"
               onClick={() => {

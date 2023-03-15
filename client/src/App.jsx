@@ -7,6 +7,9 @@ import EditComponent from "./components/EditComponent";
 import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import PrivateRoutes from "./PrivateRoutes";
+import LoggedComponent from "./layout/LoggedComponent";
+
+
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
 
         <Route path="/login" element={<LoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
+        <Route path="/logged" element={<LoggedComponent />} />
       </Routes>
     </BrowserRouter>
     // <BrowserRouter>
