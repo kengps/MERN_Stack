@@ -58,3 +58,17 @@ exports.deleteUser = async (req, res) => {
     res.status(400).json({ error: "Server isError" });
   }
 };
+
+// ค้นหา user 1 user และทำการ update
+exports.changStatus = async (req, res) => {
+  try {
+    const user = await Users.findOneAndUpdate(
+      { _id: req.body.id },// ตัวที่ค้นหา
+      { enabled: req.body.enabled } // ตัวที่ต้องการให้ update
+    ).exec();
+    res.json(user);
+  } catch (error) {
+    console.log("เกิดข้อผิดพลาด", error);
+    res.status(400).json({ error: "Server isError" });
+  }
+};
