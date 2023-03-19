@@ -35,14 +35,12 @@ const LoggedComponent = () => {
 
   //
   const levelRole = (role) => {
-    if(role === "user") {
-
-      redirect('/level/user');
-    }else {
-      redirect('/level/admin');
+    if (role === "user") {
+      redirect("/level/user");
+    } else {
+      redirect("/level/admin");
     }
-
-  }
+  };
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -64,7 +62,7 @@ const LoggedComponent = () => {
       SweetAlert.fire("แจ้งเตือน", "เข้าสู่ระบบสำเร็จ", "success");
       setState({ ...state, username: "", password: "" });
 
-      // payload มาจาก loggedComponent จากการ return action.payload
+      // payload มาจาก userReducer จากการ return action.payload
       dispatch({
         type: "LOGIN",
         payload: {
@@ -73,16 +71,9 @@ const LoggedComponent = () => {
           role: response.data.payLoad.user.role,
         },
       });
-      localStorage.setItem("token", token); 
+      localStorage.setItem("token", token);
 
-      setTimeout(() =>{
-        levelRole(response.data.payLoad.user.role);
-
-      },3000) 
-
-    
-
-
+      levelRole(response.data.payLoad.user.role);
     } catch (error) {
       SweetAlert.fire("แจ้งเตือน", "เข้าสู่ระบบไม่สำเร็จ", "error");
       console.log(error);

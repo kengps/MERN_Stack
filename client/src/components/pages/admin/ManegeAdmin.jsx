@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarAdminComponent from "../../../layout/NavbarAdminComponent";
 
-const PageAdmin = () => {
+const ManegeAdmin = () => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -9,11 +9,11 @@ const PageAdmin = () => {
           <NavbarAdminComponent />
         </div>
         <div className="col">
-          <h1>PageAdmin</h1>
+          <h1>ManegeAdmin</h1>
         </div>
       </div>
     </div>
   );
 };
 
-export default PageAdmin;
+export default ManegeAdmin;

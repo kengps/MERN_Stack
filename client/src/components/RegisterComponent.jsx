@@ -10,7 +10,7 @@ import { BiHide, BiShow } from "react-icons/bi";
 
 
 import axios from "axios";
-import NavbarComponent from "../layout/NavnarComponent";
+
 
 
 
@@ -87,7 +87,7 @@ const RegisterComponent = () => {
     <div>
       {JSON.stringify(state)}
       <h1>ResgisterComponent</h1>
-      <NavbarComponent  />
+      
      
       <div className="from-control">
         <Form onSubmit={submitForm}>

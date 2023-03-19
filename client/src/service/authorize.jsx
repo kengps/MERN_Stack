@@ -32,7 +32,7 @@ export const getUser = (response, next) => {
 };
 
 export const logout = (next) => {
-  if (window !== "undefiend") {
+  if (window !== "Undefiend") {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("user");
   }

@@ -34,6 +34,42 @@ exports.requireLogin = exJwt({
 //   });
 // }
 
+
+
+exports.currentUser = async (req , res) => {
+
+  
+  try {
+    console.log('ตรวจสอบ ', req.user);
+    const user = await Users.findOne({username: req.user.username}).select('-password').exec()
+      res.send(user)
+    console.log('userController ', user );
+  } catch (error) {
+    console.log('เกิดข้อผิดพลาด', error);
+    res.status(400).json({error: "Server isError"})
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //login แบบ การสมัครและดึงข้อมูลมาจากฐานข้อมูล
 
 exports.logged = async(req ,res) => {

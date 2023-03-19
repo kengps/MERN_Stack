@@ -11,8 +11,36 @@ import LoggedComponent from "./layout/LoggedComponent";
 import PageAdmin from "./components/pages/admin/PageAdmin";
 import PageUser from "./components/pages/users/PageUser";
 
+import { currentUser } from "./components/api/auth";
+import { useDispatch } from "react-redux";
+import UserRouter from "./components/routers/UserRouter";
+import AdminRouter from "./components/routers/AdminRouter";
+import ManegeAdmin from "./components/pages/admin/ManegeAdmin";
 
 function App() {
+  const idToken = localStorage.token; //token คือชื่อที่เราตั้ง
+
+  //ทำการบันทึกลง store
+  const dispatch = useDispatch();
+
+  console.log("idToken " + idToken);
+
+  if (idToken) {
+    currentUser(idToken)
+      .then((response) => {
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            token: idToken,
+            username: response.data.username,
+            role: response.data.role,
+          },
+        });
+        console.log("response ", response);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -30,8 +58,31 @@ function App() {
         <Route path="/login" element={<LoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
         <Route path="/logged" element={<LoggedComponent />} />
-        <Route path="/level/admin" element={<PageAdmin />} />
-        <Route path="/level/user" element={<PageUser />} />
+        <Route
+          path="/level/admin"
+          element={
+            <AdminRouter>
+              <PageAdmin />
+            </AdminRouter>
+          }
+        />
+
+        <Route
+          path="/level/admin/manege"
+          element={
+            <AdminRouter>
+              <ManegeAdmin/>
+            </AdminRouter>
+          }
+        />
+        <Route
+          path="/level/user"
+          element={
+            <UserRouter>
+              <PageUser />
+            </UserRouter>
+          }
+        />
       </Routes>
     </BrowserRouter>
     // <BrowserRouter>

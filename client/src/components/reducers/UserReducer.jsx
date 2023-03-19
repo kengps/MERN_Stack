@@ -5,7 +5,8 @@ export function userReducer(state = null, action) {
       case "LOGIN":
         return action.payload; //ต้องการค่าอะไรให้ส่งค่านั้นไป
       case "LOGOUT":
-        return "2222222";
+        localStorage.clear();
+        return action.payload;
       default:
         return state
         

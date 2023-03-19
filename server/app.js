@@ -7,6 +7,7 @@ const cors = require('cors');
 const routerBlog = require('./routers/blog')
 const routerAuth = require('./routers/auth')
 const routerRegister = require('./routers/register')
+const routerUsers = require('./routers/users')
 
 const mongoose = require('mongoose');
 //connect dataBase
@@ -30,5 +31,6 @@ app.use(morgan('dev'));
 app.use('/api', routerBlog);
 app.use("/api", routerAuth);
 app.use("/api", routerRegister);
+app.use("/api", routerUsers);
 
 app.listen(process.env.PORT , ()=> console.log('Server is running 3001'));
