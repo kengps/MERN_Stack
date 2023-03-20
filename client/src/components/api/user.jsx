@@ -14,9 +14,23 @@ export const lisetUsers = async (authtoken) => {
   );
 };
 
+//แก้ไข Status
 export const changStatus = async (authtoken, value) => {
   return await axios.post(
     `${import.meta.env.VITE_REACT_APP_API}/change-status`, value,
+
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
+
+//แก้ไข ระดับ
+export const changRole = async (authtoken, value) => {
+  return await axios.post(
+    `${import.meta.env.VITE_REACT_APP_API}/change-role`, value,
 
     {
       headers: {

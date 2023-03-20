@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NavbarAdminComponent from "../../../layout/NavbarAdminComponent";
-import { changStatus, lisetUsers } from "../../api/user";
+import { changStatus, lisetUsers, changRole } from "../../api/user";
 import { useSelector } from "react-redux";
 
-import { Switch } from "antd";
+import { Switch, Select, Tag } from "antd";
+import Item from "antd/es/list/Item";
 const ManegeAdmin = () => {
   // state สำหรับการจัดเก็บข้อมูล
   const [data, setData] = useState([]);
@@ -35,11 +36,31 @@ const ManegeAdmin = () => {
         console.log(err);
       });
   };
+  
   //ให้  useEffect ทำงาน function  loadUser โดยรับค่า user.token มาด้วย
   useEffect(() => {
     loadUser(user.token);
   }, []);
+  //กำหนดตัวแปร เพื่อการวนวูป
+  const roleData = ["admin", "user"];
 
+  // function สำหรับการแก้ไข role เมื่อมีการเปลี่ยนแปลงข้อมูลตรง select สามารถ copy จากhandleOnchange ได้เลยแต่ต้องเปลี่ยนชื่อ function  เอง
+  const handleOnchangeRole = (e, id) => {
+    const value = {
+      id: id,
+      role: e,
+    };
+    console.log(value);
+    //changRole คือ function การยิง API
+    changRole(user.token, value)
+      .then((res) => {
+        console.log(res);
+        loadUser(user.token);
+      })
+      .catch((err) => {
+        console.log(err.res);
+      });
+  };
   return (
     <div className="container-fluid">
       <div className="row">
@@ -51,8 +72,7 @@ const ManegeAdmin = () => {
             <h1>{state.username}</h1>;
           })} */}
           <h1>ManegeAdmin</h1>
-        </div>
-        <div>
+          <div className="container">
           <table className="table table-striped table-hover ">
             <thead>
               <tr>
@@ -71,7 +91,30 @@ const ManegeAdmin = () => {
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>{item.username}</td>
-                  <td>{item.role}</td>
+                  <td>
+                    {/* การทำเมนู Select โดยใช้ antd ข้างในต้องมี Select.Option ชั้นในด้วย
+                     โดยใน onChange เราจะรับ function มาด้วย ทำคล้ายๆ กับ Status */}
+                    <Select
+                      style={{ width: "75%" }}
+                      value={item.role}
+                      defaultValue={item.role}
+                      onChange={(e) => handleOnchangeRole(e, item._id)}
+                    >
+                      {/* Select.Option  เราจะทำการ map roleData ที่เรากำหนดโดยมี admin และ user 
+                       หลังจาก map แล้ว ให้ทำการวน Select.Option  ไปโดยจะมีการกำหนดสีให้กับค่า value ของ admin และ user 
+                     โดยใช้ Tag เป็นตัวกำหนดสี */}
+
+                      {roleData.map((item, index) => (
+                        <Select.Option value={item} key={index}>
+                          {item == "admin" ? (
+                            <Tag color="blue">{item}</Tag>
+                          ) : (
+                            <Tag color="gold">{item}</Tag>
+                          )}
+                        </Select.Option>
+                      ))}
+                    </Select>
+                  </td>
                   <td>
                     <Switch
                       checked={item.enabled}
@@ -87,6 +130,8 @@ const ManegeAdmin = () => {
             </tbody>
           </table>
         </div>
+        </div>
+        
       </div>
     </div>
   );
