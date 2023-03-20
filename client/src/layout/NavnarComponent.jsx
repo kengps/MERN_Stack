@@ -25,11 +25,11 @@ const handleLogout = ()=>{
     <>
       
       <Menu  mode="horizontal">
-          <Menu.Item key={'mail'} icon={<MailOutlined />}>
+          <Menu.Item key={'mail'} icon={<MailOutlined />} >
             LOGIN
           </Menu.Item>
 
-          <Menu.Item key={'app'} icon={<MailOutlined />} onClick={handleLogout}>
+          <Menu.Item key={'app'} icon={<MailOutlined />} onClick={handleLogout} style={{float:'right'}}>
             LOGOUT
           </Menu.Item>
       </Menu>

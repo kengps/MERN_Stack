@@ -28,16 +28,21 @@ exports.readUser = async (req, res) => {
 };
 
 // ค้นหา user 1 user และทำการ update
-exports.updateUser = async (req, res) => {
+exports.updatePassword = async (req, res) => {
   try {
-    const { role, enabled, password } = req.body;
+    const {id , password} = req.body.values
+    // 1 gen salt
+const  salt = await bcrypt.genSalt(10)
+// encrypt 
+const enPassword = await bcrypt.hash(password , salt)
 
-    // { new: true } คือ การให้แสดงค่าใหม่
-    const user = await Users.findOneAndUpdate(
-      { password, role, enabled },
-      { new: true }
-    ).exec();
-    res.json(user);
+const user = await Users.findOneAndUpdate(
+  { _id: id },// ตัวที่ค้นหา
+  { password: enPassword } // ตัวที่ต้องการให้ update
+
+).exec();
+res.json(user);
+   
   } catch (error) {
     console.log("เกิดข้อผิดพลาด", error);
     res.status(400).json({ error: "Server isError" });
@@ -52,7 +57,7 @@ exports.deleteUser = async (req, res) => {
 
     // { new: true } คือ การให้แสดงค่าใหม่
     await Users.findOneAndRemove({ _id: id }).exec();
-    res.json({ message: "Delete User Success!!" });
+    res.json({ message: "ทำการลบข้อมูลสำเร็จ" });
   } catch (error) {
     console.log("เกิดข้อผิดพลาด", error);
     res.status(400).json({ error: "Server isError" });

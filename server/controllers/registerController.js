@@ -1,5 +1,5 @@
 const registers = require('../models/registers');
-
+const bcrypt = require('bcryptjs')
 
 
 
@@ -25,4 +25,24 @@ exports.register =(req,res) =>{
 //   res.json({
 //       data: {username , password , confirmpass}
 //   })
+}
+
+
+exports.register2 = async (req,res) =>{
+  const { username, password  } = req.body;
+  let user = await registers.findOne({username});
+
+  if(user){
+      return res.status(400).send('User Already exists')
+  }
+const  salt = await bcrypt.genSalt(10);
+
+user = new registers({
+  username,
+  password
+});
+user.password = await bcrypt.hash(password , salt);
+
+await user.save();
+res.send('Register Success!!')
 }

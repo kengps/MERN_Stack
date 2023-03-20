@@ -2,7 +2,7 @@ const express = require("express");
 const {
   listUser,
   readUser,
-  updateUser,
+  updatePassword,
   deleteUser,
   changStatus,
   changeRole
@@ -15,7 +15,7 @@ const { authMiddleware ,checkAdmin} = require("../middleware/authMid");
 
 router.get('/listuser' ,authMiddleware ,checkAdmin, listUser)
 router.get('/listuser/:id' , readUser)
-router.put('/listuser/:id' , updateUser)
+router.put('/listuser/:id' , updatePassword)
 
 router.delete('/listuser/:id' , deleteUser)
 

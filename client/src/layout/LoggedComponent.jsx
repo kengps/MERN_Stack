@@ -115,7 +115,7 @@ const LoggedComponent = () => {
           </div>
 
           <Button className="mt-3" type="submit">
-            Register
+            Login
           </Button>
         </Form>
       </div>

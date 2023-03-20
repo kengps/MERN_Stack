@@ -24,3 +24,4 @@ export const currentAdmin = async(authtoken)  =>{
       );
 
 }
+
