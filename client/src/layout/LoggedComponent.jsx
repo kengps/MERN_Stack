@@ -9,6 +9,9 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+
+
+
 const LoggedComponent = () => {
   const redirect = useNavigate();
   const dispatch = useDispatch();
@@ -57,9 +60,10 @@ const LoggedComponent = () => {
         }
       );
       const token = response.data.token;
-      console.log(response.data);
+      console.log('ได้อะไรมา',response.data);
 
-      SweetAlert.fire("แจ้งเตือน", "เข้าสู่ระบบสำเร็จ", "success");
+      
+     SweetAlert.fire("แจ้งเตือน", response.data.payLoad.user.username + ' เข้าสู่ระบบสำเร็จ', "success");
       setState({ ...state, username: "", password: "" });
 
       // payload มาจาก userReducer จากการ return action.payload
@@ -91,7 +95,7 @@ const LoggedComponent = () => {
 
       <div className="from-control">
         <Form onSubmit={submitForm}>
-          <div>
+          <div className="form-group">
             <InputGroup className="border mt-3">
               <InputGroup.Text>Username</InputGroup.Text>
               <Form.Control
@@ -101,7 +105,9 @@ const LoggedComponent = () => {
                 value={username}
               />
             </InputGroup>
+           
 
+          
             <InputGroup className="mt-3">
               <InputGroup.Text>Password</InputGroup.Text>
               <Form.Control
@@ -110,9 +116,9 @@ const LoggedComponent = () => {
                 type="password"
                 value={password}
                 onChange={inputValue("password")}
-              />
+                />
             </InputGroup>
-          </div>
+           </div>
 
           <Button className="mt-3" type="submit">
             Login

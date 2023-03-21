@@ -28,6 +28,17 @@ const NavbarComponent = () => {
             </Link>
           </li>
         )}
+        <li className="nav-item pr-3 pt-3 pb-3">
+          <Link className="nav-link" to="/register">
+            สมัคสมาชิก
+          </Link>
+        </li>
+        <li className="nav-item pr-3 pt-3 pb-3">
+          <Link className="nav-link" to="/logged">
+            เข้าสู่ระบบเส้นทางที่ 2
+          </Link>
+          
+        </li>
         {getUser() && (
           <li className="nav-item pr-3 pt-3 pb-3">
 

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import NavbarAdminComponent from "../../../layout/NavbarAdminComponent";
-import { changStatus, listUsers, changRole, deleteUser ,resetPassword} from "../../api/user";
+import {
+  changStatus,
+  listUsers,
+  changRole,
+  deleteUser,
+  resetPassword,
+} from "../../api/user";
 import { useSelector } from "react-redux";
 import Sweet from "sweetalert2";
 
@@ -9,6 +15,8 @@ import Item from "antd/es/list/Item";
 
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import moment from "moment/min/moment-with-locales";
+import InputGroup from "react-bootstrap/InputGroup";
+
 const ManegeAdmin = () => {
   // state สำหรับการจัดเก็บข้อมูล
   const [data, setData] = useState([]);
@@ -17,31 +25,35 @@ const ManegeAdmin = () => {
   const { user } = useSelector((state) => ({ ...state }));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [values , setValues] = useState({
-    id: '',
-    password: ''
-  })
-// function Modal เมื่อกดที่ปุ่มก็จะโชว์หน้าต่างขึ้นมา
-// โดยจะรับ id เข้ามา
+  const [values, setValues] = useState({
+    id: "",
+    password: "",
+  });
+  // function Modal เมื่อกดที่ปุ่มก็จะโชว์หน้าต่างขึ้นมา
+  // โดยจะรับ id เข้ามา
   const showModal = (id) => {
     console.log(id);
     setIsModalOpen(true);
-    setValues({...values , id: id})
+    setValues({ ...values, id: id });
   };
   // เมื่อกด ok จะให้ทำการยิง api เพื่อทำการ update รหัสผ่าน
   const handleOk = () => {
     setIsModalOpen(false);
-    resetPassword(user.token , values.id ,{values}).then((res) => {
+    resetPassword(user.token, values.id, { values })
+      .then((res) => {
         console.log(res);
-    }).catch((err) => { console.log(err);})
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-//function การพิมพ์ โดยรับ id และ password มาจาก e
-const handleChangePassword =(e) => {
-  setValues({...values , [e.target.name]: e.target.value})
-}
+  //function การพิมพ์ โดยรับ id และ password มาจาก e
+  const handleChangePassword = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   console.log("user", user);
   // สร้าง function สำหรับการยิง api แต่เราได้สร้าง function แยกไว้ในตัวแปร lisetUsers
   const loadUser = (authtoken) => {
@@ -141,12 +153,12 @@ const handleChangePassword =(e) => {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">username</th>
-                  <th scope="col">role</th>
-                  <th scope="col">status</th>
-                  <th scope="col">createdAt</th>
-                  <th scope="col">updateAt</th>
-                  <th scope="col">setting</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">CreatedAt</th>
+                  <th scope="col">ActiveAt</th>
+                  <th scope="col">Setting</th>
                 </tr>
               </thead>
               <tbody>
@@ -196,7 +208,7 @@ const handleChangePassword =(e) => {
                     </td>
                     <td>
                       <DeleteOutlined onClick={() => handleDelete(item._id)} />
-                      <EditOutlined onClick={() =>showModal(item._id)} />
+                      <EditOutlined onClick={() => showModal(item._id)} />
                     </td>
                   </tr>
                 ))}
@@ -208,12 +220,18 @@ const handleChangePassword =(e) => {
               onOk={handleOk}
               onCancel={handleCancel}
             >
-              <p>New password...</p>
-              <input type="text" name="password" onChange={handleChangePassword}
-              />
+              <InputGroup>
+                <InputGroup.Text>New password</InputGroup.Text>
+                <input
+                  type="text"
+                  name="password"
+                  onChange={handleChangePassword}
+                  className="form-control"
+                />
+              </InputGroup>
             </Modal>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const { register ,register2 } = require("../controllers/registerController");
 
 
 
-router.post("/register", register);
+router.post("/register", register2);
 router.post("/register2", register2);
 
 

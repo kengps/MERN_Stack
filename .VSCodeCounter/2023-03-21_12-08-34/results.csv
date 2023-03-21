@@ -1,0 +1,49 @@
+"filename", "language", "HTML", "JSON", "JavaScript", "XML", "JavaScript React", "CSS", "Properties", "comment", "blank", "total"
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\.env", "Properties", 0, 0, 0, 0, 0, 0, 1, 3, 1, 5
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\index.html", "HTML", 15, 0, 0, 0, 0, 0, 0, 0, 1, 16
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\package-lock.json", "JSON", 0, 8947, 0, 0, 0, 0, 0, 0, 1, 8948
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\package.json", "JSON", 0, 40, 0, 0, 0, 0, 0, 0, 1, 41
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\public\vite.svg", "XML", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\App.css", "CSS", 0, 0, 0, 0, 0, 38, 0, 0, 7, 45
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\App.jsx", "JavaScript React", 0, 0, 0, 0, 81, 0, 0, 20, 10, 111
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\MyRouter.jsx", "JavaScript React", 0, 0, 0, 0, 162, 0, 0, 8, 22, 192
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\PrivateRoutes.jsx", "JavaScript React", 0, 0, 0, 0, 6, 0, 0, 1, 4, 11
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\assets\react.svg", "XML", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\BlogComponent.jsx", "JavaScript React", 0, 0, 0, 0, 103, 0, 0, 16, 16, 135
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\EditComponent.jsx", "JavaScript React", 0, 0, 0, 0, 109, 0, 0, 27, 19, 155
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\LoginComponent.jsx", "JavaScript React", 0, 0, 0, 0, 78, 0, 0, 8, 11, 97
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\NavbarComponent.jsx", "JavaScript React", 0, 0, 0, 0, 61, 0, 0, 0, 7, 68
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\RegisterComponent.jsx", "JavaScript React", 0, 0, 0, 0, 124, 0, 0, 16, 31, 171
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\SingleComponent.jsx", "JavaScript React", 0, 0, 0, 0, 35, 0, 0, 2, 4, 41
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\api\auth.jsx", "JavaScript React", 0, 0, 0, 0, 22, 0, 0, 0, 6, 28
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\api\user.jsx", "JavaScript React", 0, 0, 0, 0, 53, 0, 0, 2, 12, 67
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\pages\admin\ManegeAdmin.jsx", "JavaScript React", 0, 0, 0, 0, 184, 0, 0, 26, 13, 223
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\pages\admin\PageAdmin.jsx", "JavaScript React", 0, 0, 0, 0, 17, 0, 0, 0, 3, 20
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\pages\users\PageUser.jsx", "JavaScript React", 0, 0, 0, 0, 11, 0, 0, 0, 5, 16
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\reducers\UserReducer.jsx", "JavaScript React", 0, 0, 0, 0, 11, 0, 0, 0, 4, 15
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\reducers\index.jsx", "JavaScript React", 0, 0, 0, 0, 6, 0, 0, 5, 7, 18
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\routers\AdminRouter.jsx", "JavaScript React", 0, 0, 0, 0, 23, 0, 0, 1, 6, 30
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\routers\LoadingAndRedirect.jsx", "JavaScript React", 0, 0, 0, 0, 18, 0, 0, 5, 7, 30
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\components\routers\UserRouter.jsx", "JavaScript React", 0, 0, 0, 0, 8, 0, 0, 3, 4, 15
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\index.css", "CSS", 0, 0, 0, 0, 0, 61, 0, 0, 8, 69
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\layout\LoggedComponent.jsx", "JavaScript React", 0, 0, 0, 0, 93, 0, 0, 14, 23, 130
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\layout\NavbarAdminComponent.jsx", "JavaScript React", 0, 0, 0, 0, 17, 0, 0, 0, 8, 25
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\layout\NavnarComponent.jsx", "JavaScript React", 0, 0, 0, 0, 29, 0, 0, 1, 10, 40
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\main.jsx", "JavaScript React", 0, 0, 0, 0, 17, 0, 0, 6, 11, 34
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\src\service\authorize.jsx", "JavaScript React", 0, 0, 0, 0, 32, 0, 0, 4, 5, 41
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\client\vite.config.js", "JavaScript", 0, 0, 5, 0, 0, 0, 0, 1, 2, 8
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\app.js", "JavaScript", 0, 0, 23, 0, 0, 0, 0, 3, 10, 36
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\controllers\authController.js", "JavaScript", 0, 0, 84, 0, 0, 0, 0, 31, 19, 134
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\controllers\blogController.js", "JavaScript", 0, 0, 64, 0, 0, 0, 0, 10, 12, 86
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\controllers\registerController.js", "JavaScript", 0, 0, 34, 0, 0, 0, 0, 4, 10, 48
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\controllers\usersContrllor.js", "JavaScript", 0, 0, 72, 0, 0, 0, 0, 9, 11, 92
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\middleware\authMid.js", "JavaScript", 0, 0, 29, 0, 0, 0, 0, 3, 9, 41
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\models\blogs.js", "JavaScript", 0, 0, 24, 0, 0, 0, 0, 0, 3, 27
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\models\registers.js", "JavaScript", 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\package-lock.json", "JSON", 0, 5406, 0, 0, 0, 0, 0, 0, 1, 5407
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\package.json", "JSON", 0, 27, 0, 0, 0, 0, 0, 0, 1, 28
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\routers\auth.js", "JavaScript", 0, 0, 10, 0, 0, 0, 0, 1, 8, 19
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\routers\blog.js", "JavaScript", 0, 0, 16, 0, 0, 0, 0, 0, 3, 19
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\routers\register.js", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 8, 14
+"d:\Keng\01-VS CODE PROJECT\MERN_STACK_BLOG_LOGIN\server\routers\users.js", "JavaScript", 0, 0, 18, 0, 0, 0, 0, 0, 10, 28
+"Total", "-", 15, 14420, 408, 2, 1300, 99, 1, 230, 377, 16852

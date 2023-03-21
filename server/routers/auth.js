@@ -4,7 +4,7 @@ const { login, logged, currentUser ,logged2 } = require("../controllers/authCont
 const { authMiddleware ,checkAdmin} = require("../middleware/authMid");
 
 router.post("/login", login);
-router.post("/logged", logged);
+router.post("/logged", logged2);
 router.post("/logged2", logged2);
 
 

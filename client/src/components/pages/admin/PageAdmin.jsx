@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarAdminComponent from "../../../layout/NavbarAdminComponent";
+import NavbarComponent from "../../../layout/NavnarComponent";
 
 const PageAdmin = () => {
   return (
@@ -9,6 +10,7 @@ const PageAdmin = () => {
           <NavbarAdminComponent />
         </div>
         <div className="col">
+          <NavbarComponent/>
           <h1>PageAdmin</h1>
         </div>
       </div>

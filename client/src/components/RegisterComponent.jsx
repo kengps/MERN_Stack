@@ -6,7 +6,7 @@ import SweetAlert from "sweetalert2";
 
 import { BiHide, BiShow } from "react-icons/bi";
 //import { Spin } from "antd";
-
+import { toast} from 'react-toastify';
 
 
 import axios from "axios";
@@ -70,8 +70,8 @@ const RegisterComponent = () => {
         SweetAlert.fire("แจ้งเตือน", "สมัคสมาชิกสำเร็จ", "success");
         setState({ ...state, username: "", password: "", confirmpass: "" }); 
         setConfirmPasswordNotMatch("");
-      } catch (error) {
-        alert(error.message);
+      } catch (err) {
+        alert(err.message);
         
       }
     }
