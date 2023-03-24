@@ -39,7 +39,7 @@ const LoggedComponent = () => {
   //
   const levelRole = (role) => {
     if (role === "user") {
-      redirect("/level/user");
+      redirect("/");
     } else {
       redirect("/level/admin");
     }

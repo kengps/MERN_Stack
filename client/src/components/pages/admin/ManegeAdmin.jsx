@@ -140,15 +140,15 @@ const ManegeAdmin = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-2">
+        <div className="col-md-2 ">
           <NavbarAdminComponent />
         </div>
-        <div className="col">
+        <div className="col text-center" >
           {/* {state.map((state, index) => {
             <h1>{state.username}</h1>;
           })} */}
           <h1>ManegeAdmin</h1>
-          <div className="container">
+          <div className="container m-md-5 text-center" style={{ position: "fixed", display: 'block' }}>
             <table className="table table-striped table-hover">
               <thead>
                 <tr>
@@ -231,7 +231,7 @@ const ManegeAdmin = () => {
               </InputGroup>
             </Modal>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   );
